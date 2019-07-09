@@ -23,7 +23,7 @@
                 .button-list-2
                     button.button.button--round.button-primary(
                     @click='resetDrop'
-                    ) RESET EVENTS
+                    ) RESET ALL EVENTS
 </template>
 <script>
 import moment from 'moment'
@@ -35,8 +35,7 @@ export default {
             taskDescription: '',
             taskId: 1,
             date: new Date().toISOString().substr(0, 10),
-            landscape: true,
-            eventDate: new Date().getUTCDate()
+            landscape: true
         }
     },
     methods: {
@@ -57,7 +56,6 @@ export default {
                 //reset
                 this.taskId += 1
                 this.taskDescription = ''
-                this.eventDate +=1
             },
 
             //функция отмтеки дня с ивентом
@@ -70,7 +68,7 @@ export default {
                 }
                 return 
             },
-            
+
             //функция ресета ивентов
             resetDrop() {
                 this.$store.dispatch('resetTasks', {})

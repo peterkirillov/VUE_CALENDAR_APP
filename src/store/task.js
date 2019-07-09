@@ -24,7 +24,6 @@ export default {
     },
 
     resetTasks ({commit}, payload) {
-      // Object.assign(state, getDefaultState())
       commit('resetTasks', payload)
     }
 
