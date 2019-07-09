@@ -59,6 +59,7 @@ export default {
                 this.taskDescription = ''
                 this.eventDate +=1
             },
+
             //функция отмтеки дня с ивентом
             functionEvents (event) {
                 const [,, day] = event.split('-')
@@ -69,6 +70,7 @@ export default {
                 }
                 return 
             },
+            
             //функция ресета ивентов
             resetDrop() {
                 this.$store.dispatch('resetTasks', {})
