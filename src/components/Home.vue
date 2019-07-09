@@ -37,11 +37,9 @@ export default {
             date: new Date().toISOString().substr(0, 10),
             landscape: true,
             eventDate: new Date().getUTCDate()
-            
         }
     },
     methods: {
-            
             newTask () {
                 //если описание пустое
                 if(this.taskDescription === ''){
@@ -50,13 +48,11 @@ export default {
                 const task = {
                     id: this.taskId,
                     title: this.computedDateFormattedMomentjs,
-                    // title: this.date,
                     description: this.taskDescription
                 }
                 
                 //Отправка события
                 this.$store.dispatch('newTask', task)
-                
 
                 //reset
                 this.taskId += 1
