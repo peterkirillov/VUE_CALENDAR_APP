@@ -36,22 +36,21 @@ export default {
       try {
         // взятие данных по событиям из firebase
         const task = await firebase.database().ref('tasks').once('value')
-        const tasks = task.val()
-        // console.log(tasks)
+        const tasks = task.val() || {}
         const tasksArray = []
         Object.keys(tasks).forEach(key => {
           const t = tasks[key]
-          tasksArray.push(
+          let taskObj =
             new Task(
               // t.id,
               t.title,
               t.description,
               t.departureStation,
               t.arrivalStation,
-              t.user,
-              key
+              t.user
             )
-          )
+          taskObj.id = key
+          tasksArray.push(taskObj)
         })
         commit('loadTasks', tasksArray)
         commit('setLoading', false)
@@ -83,7 +82,7 @@ export default {
         commit('setLoading', false)
       } catch (error) {
         commit('setLoading', false)
-        commit('setError', error.massage)
+        commit('setError', error.message)
         throw error
       }
     },
