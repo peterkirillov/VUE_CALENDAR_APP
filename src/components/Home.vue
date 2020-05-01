@@ -48,9 +48,9 @@ export default {
             // taskId: 1,
             date: new Date().toISOString().substr(0, 10),
             landscape: true,
-            items: stations.map(function (station) { return station.name }),
-            sDeparture: stations.map(function (station) { return station.name }),
-            sArrival: stations.map(function (station) { return station.name })
+            items: '',
+            sDeparture: '',
+            sArrival: '' 
         }
     },
     created(){
@@ -58,20 +58,18 @@ export default {
     },
     methods: {
             fetchData(){
-                //let stationsJson = fs.readFileSync('D:/Vue.application/Vue_calendar/stations/metro-file.json');
-                //let stationsJson = json ;
-                //let stationsArr = JSON.parse(stationsJson).stations.map(function(station){return station.name});
-                //return this.items = ['a', 'b']
+                return this.items = this.sDeparture = this.sArrival = stations.map(station => station.name)
             },
             newTask () {
+                let stationsArr = stations.map(station => station.name)
                 //если описание пустое
                 if(this.taskDescription === ''){
                     return alert('Заполните описание события')
                 }
-                if(this.sDeparture === ''){
+                if(this.sDeparture.length === stationsArr.length){
                     return alert('Заполните станцию метро отправления')
                 }
-                if(this.sArrival === ''){
+                if(this.sArrival.length === stationsArr.length){
                     return alert('Заполните станцию метро прибытия')
                 }
                 const task = {
@@ -96,7 +94,7 @@ export default {
             //функция отмтеки дня с ивентом
             functionEvents (event) {
                 const [,, day] = event.split('-')
-                let currentDate = moment(event).format('dddd, MMMM Do YYYY')
+                let currentDate = moment(event).format('YYYY-MM-DD')
                 for (let i of this.$store.getters.tasks) {
                     let selectedDate = i.title
                     if (selectedDate === currentDate) return ['red']

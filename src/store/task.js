@@ -98,15 +98,12 @@ export default {
         commit('setError', error.message)
         throw error
       }
-    },
+    }
     /*
     deleteTask ({commit}, payload) {
       commit('deleteTask', payload)
     },
     */
-    resetTasks ({commit}, payload) {
-      commit('resetTasks', payload)
-    }
   },
   getters: {
     tasks (state, getters) {

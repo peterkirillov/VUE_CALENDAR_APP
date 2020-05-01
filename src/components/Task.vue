@@ -3,8 +3,9 @@
         section
             .container
                 h1.ui-title-1 События
-                .task.list
-                    .task.item(
+                span(v-if="tasks.length === 0") У вас пока нету событий
+                .task-list
+                    .task-item(
                         v-for='task in tasks'
                         :key="task.id"
                     )
@@ -18,10 +19,6 @@
                                 .task.item__body
                                     p.ui-text-regular {{ task.description }}
                                     p.ui-text-regular Путь от станции {{ task.departureStation }} до станции {{ task.arrivalStation }}
-                .button-list
-                    button.button.button--round.button-primary(
-                    @click='resetTasks'
-                    ) УДАЛИТЬ ВСЕ СОБЫТИЯ
 </template>
 
 <script>
@@ -33,9 +30,6 @@ export default {
         }
     },
     methods: {
-        resetTasks() {
-            this.$store.dispatch('resetTasks')
-        },
         deleteTask (id) {
             this.$store.dispatch('deleteTask', id)
              .then(() => {
@@ -48,6 +42,9 @@ export default {
 </script>
 
 <style>
+.task-item{
+    margin-bottom: 20px;
+}
 .ui-text-regular {
   font-size: large;
 }
