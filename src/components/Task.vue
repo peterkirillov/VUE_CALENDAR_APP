@@ -3,7 +3,7 @@
         section
             .container
                 h1.ui-title-1 События
-                span(v-if="tasks.length === 0") У вас пока нету событий
+                span.task-info(v-if="tasks.length === 0") У вас пока нету событий
                 .task-list
                     .task-item(
                         v-for='task in tasks'
@@ -42,6 +42,9 @@ export default {
 </script>
 
 <style>
+.task-info {
+    font-size: 20px;
+}
 .task-item{
     margin-bottom: 20px;
 }

@@ -5,7 +5,7 @@
                 event-color="red lighten-1" color='#444ce0' locale="ru")
             .container
                 h1.ui-title-1 Введите дату и описание события
-                v-text-field(
+                v-text-field.computed-date(
                     :value='computedDateFormattedMomentjs'
                     prepend-icon="event"
                     readonly
@@ -121,6 +121,9 @@ export default {
   margin-right: 75px;
   display: flex;
 }
+.theme--light.v-icon {
+  color: rgb(68, 76, 224);
+}
 .button,
 input,
 select,
@@ -139,5 +142,10 @@ textarea {
 .v-select.v-select--chips input {
   border: none;
 }
-
+.button-list-1 {
+    margin-top: 10px;
+}
+.ui-title-1 {
+  border-bottom: 1px solid #ccc;
+}
 </style>

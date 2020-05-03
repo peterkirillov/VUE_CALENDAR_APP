@@ -59,8 +59,11 @@ export default {
 
 <style lang='stylus'>
 @import '~vuetify/src/stylus/main'
-a
-  font-size large
-.navbar-link
-  font-size 16px
+a {
+	font-size: large;
+}
+
+.navbar-link {
+	font-size: 16px;
+}
 </style>
